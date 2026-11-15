@@ -1,0 +1,208 @@
+/* --- Reset Básico e Variáveis --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --cor-primaria: #8B4513;
+    --cor-secundaria: #F4F1EA;
+    --cor-texto: #333333;
+    --cor-fundo: #FAFAFA;
+    --branco: #FFFFFF;
+}
+
+body {
+    font-family: Arial, sans-serif, system-ui;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* --- Cabeçalho e Navegação --- */
+header {
+    background-color: var(--cor-primaria);
+    color: var(--branco);
+    padding: 1rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+header h1 {
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+nav {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+nav a {
+    color: var(--branco);
+    text-decoration: none;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+nav a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* --- Conteúdo Principal --- */
+main {
+    flex: 1;
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+/* --- Seção de Busca e Filtros --- */
+.busca-filtros {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.busca-filtros input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.filtros {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.filtros button {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--cor-primaria);
+    background-color: var(--branco);
+    color: var(--cor-primaria);
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.filtros button:hover {
+    background-color: var(--cor-primaria);
+    color: var(--branco);
+}
+
+/* --- Listagem e Cards --- */
+.lista-estabelecimentos {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+.card {
+    background-color: var(--branco);
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.card h3 {
+    color: var(--cor-primaria);
+    margin-bottom: 0.5rem;
+}
+
+.card p {
+    margin-bottom: 1rem;
+    color: #666;
+}
+
+.card a {
+    display: inline-block;
+    background-color: var(--cor-primaria);
+    color: var(--branco);
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+.card a:hover {
+    opacity: 0.9;
+}
+
+/* --- Formulários (Login / Cadastro / Avaliação) --- */
+form {
+    background-color: var(--branco);
+    padding: 2rem;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    max-width: 400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+form label {
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+form input, form textarea, form select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+form button {
+    background-color: var(--cor-primaria);
+    color: var(--branco);
+    padding: 0.75rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+form button:hover {
+    opacity: 0.9;
+}
+
+/* --- Responsividade (Desktop) --- */
+@media (min-width: 768px) {
+    header {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 1rem 3rem;
+    }
+
+    .busca-filtros {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .busca-filtros input {
+        flex: 1;
+    }
+
+    .lista-estabelecimentos {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
