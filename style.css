@@ -158,6 +158,8 @@ form {
 }
 
 form label {
+    display: block;
+    margin-bottom: 0.25rem;
     font-weight: bold;
     font-size: 0.9rem;
 }
@@ -168,6 +170,48 @@ form input, form textarea, form select {
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 1rem;
+    font-family: inherit;
+}
+
+form textarea {
+    resize: vertical;
+}
+
+.info-local {
+    background-color: var(--cor-secundaria);
+    padding: 0.75rem;
+    border-radius: 4px;
+    font-size: 0.95rem;
+}
+
+.aviso-login {
+    font-size: 0.85rem;
+    color: #555555;
+}
+
+.aviso-login a,
+.form-rodape a {
+    color: var(--cor-primaria);
+    font-weight: bold;
+}
+
+.form-rodape {
+    text-align: center;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid var(--cor-primaria);
+    outline-offset: 2px;
+}
+
+nav a:focus-visible {
+    outline-color: var(--branco);
 }
 
 form button {
