@@ -23,6 +23,37 @@ body {
     min-height: 100vh;
 }
 
+/* --- Acessibilidade --- */
+/* Link "Pular para o conteúdo": fica fora da tela e aparece ao receber foco pelo teclado */
+.pular-conteudo {
+    position: absolute;
+    left: 1rem;
+    top: -4rem;
+    z-index: 10;
+    background-color: var(--branco);
+    color: var(--cor-primaria);
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+}
+
+.pular-conteudo:focus {
+    top: 1rem;
+}
+
+/* Texto lido por leitores de tela, mas escondido visualmente */
+.visualmente-oculto {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
 /* --- Cabeçalho e Navegação --- */
 header {
     background-color: var(--cor-primaria);
