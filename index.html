@@ -1,3 +1,7 @@
+<!--
+  Tela: Página Inicial (lista, busca e filtros)
+  RFs atendidos: RF01, RF02, RF03
+-->
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -7,6 +11,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <a class="pular-conteudo" href="#conteudo">Pular para o conteúdo</a>
     <header>
         <h1>Guia Gastronômico de São Luís</h1>
         <nav>
@@ -16,9 +21,10 @@
         </nav>
     </header>
 
-    <main>
+    <main id="conteudo">
         <section class="busca-filtros">
-            <input type="text" placeholder="Buscar estabelecimento por nome...">
+            <label for="busca" class="visualmente-oculto">Buscar estabelecimento por nome</label>
+            <input type="text" id="busca" placeholder="Buscar estabelecimento por nome...">
             <div class="filtros">
                 <button>Todos</button>
                 <button>Comida Típica</button>
