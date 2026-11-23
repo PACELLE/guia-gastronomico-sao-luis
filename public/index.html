@@ -26,19 +26,20 @@
             <label for="busca" class="visualmente-oculto">Buscar estabelecimento por nome</label>
             <input type="text" id="busca" placeholder="Buscar estabelecimento por nome...">
             <div class="filtros">
-                <button>Todos</button>
-                <button>Comida Típica</button>
-                <button>Frutos do Mar</button>
+                <button type="button">Todos</button>
+                <button type="button">Comida Típica</button>
+                <button type="button">Frutos do Mar</button>
             </div>
         </section>
 
-        <section class="lista-estabelecimentos">
-            <div class="card">
-                <h3>Restaurante Exemplo</h3>
-                <p>Categoria: Frutos do Mar</p>
-                <a href="estabelecimentos.html">Ver Detalhes</a>
-            </div>
-        </section>
+        <!-- Mensagens de lista vazia, busca sem resultado ou erro (lidas por leitores de tela) -->
+        <p id="mensagem" class="mensagem" role="status">Carregando...</p>
+
+        <!-- Os cartões são criados por js/lista.js a partir da API (RF01) -->
+        <section id="lista" class="lista-estabelecimentos" aria-label="Estabelecimentos"></section>
     </main>
+
+    <script src="js/formatar.js"></script>
+    <script src="js/lista.js"></script>
 </body>
 </html>
