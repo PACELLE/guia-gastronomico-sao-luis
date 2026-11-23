@@ -1,0 +1,56 @@
+<!--
+  Tela: Detalhes do Estabelecimento
+  RFs atendidos: RF04, RF11
+  Abre com o id no endereço: estabelecimentos.html?id=1 (dados vindos da API, ver js/detalhes.js)
+-->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Estabelecimento - Guia Gastronômico de São Luís</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <a class="pular-conteudo" href="#conteudo">Pular para o conteúdo</a>
+    <header>
+        <h1>Guia Gastronômico de São Luís</h1>
+        <nav>
+            <!-- Link navegável para a tela de index -->
+            <a href="index.html">← Voltar para a Lista</a>
+            <!-- Link navegável para a tela de login -->
+            <a href="login.html">Entrar</a>
+        </nav>
+    </header>
+
+    <main id="conteudo">
+        <!-- Mensagens de carregamento, erro ou "não encontrado" (lidas por leitores de tela) -->
+        <p id="mensagem" class="mensagem" role="status">Carregando...</p>
+
+        <div id="detalhes" hidden>
+            <section class="card" aria-labelledby="nome">
+                <h2 id="nome"></h2>
+                <p><strong>Categoria:</strong> <span id="categoria"></span></p>
+                <p><strong>Endereço:</strong> <span id="endereco"></span></p>
+                <p><strong>Horário de Funcionamento:</strong> <span id="horario"></span></p>
+                <p><strong>Faixa de Preço:</strong> <span id="faixa-preco"></span></p>
+                <p><strong>Descrição:</strong> <span id="descricao"></span></p>
+
+                <div class="acoes-card">
+                    <!-- Link navegável para a tela de avaliação -->
+                    <a id="link-avaliar" href="avaliar.html">Avaliar Estabelecimento</a>
+                </div>
+            </section>
+
+            <section class="card card-avaliacoes" aria-labelledby="titulo-avaliacoes">
+                <h2 id="titulo-avaliacoes">Avaliações de Clientes</h2>
+                <p><strong>Nota Média:</strong> <span id="nota-media"></span></p>
+                <div id="lista-avaliacoes"></div>
+            </section>
+        </div>
+    </main>
+
+    <script src="js/formatar.js"></script>
+    <script src="js/detalhes.js"></script>
+</body>
+</html>
