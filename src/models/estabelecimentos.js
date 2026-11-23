@@ -15,8 +15,14 @@ function formatarEstabelecimento(linha) {
   };
 }
 
-// RF01: lista os estabelecimentos com nome, categoria, nota média e total de avaliações.
-async function listar() {
+// Evita que % e _ digitados na busca sejam tratados como curingas do SQL.
+function escaparCuringas(texto) {
+  return texto.replace(/[\\%_]/g, '\\$&');
+}
+
+// RF01 e RF02: lista os estabelecimentos, com busca opcional por parte do nome
+// (sem diferenciar maiúsculas e minúsculas) e filtro opcional por categoria.
+async function listar({ busca = '', categoria = '' } = {}) {
   const resultado = await consultar(
     `SELECT e.id,
             e.nome,
@@ -26,8 +32,11 @@ async function listar() {
        FROM estabelecimentos e
        JOIN categorias c ON c.id = e.categoria_id
        LEFT JOIN avaliacoes a ON a.estabelecimento_id = e.id
+      WHERE ($1 = '' OR e.nome ILIKE $2)
+        AND ($3 = '' OR c.nome = $3)
       GROUP BY e.id, c.nome
-      ORDER BY e.nome`
+      ORDER BY e.nome`,
+    [busca, `%${escaparCuringas(busca)}%`, categoria]
   );
   return resultado.rows.map(formatarEstabelecimento);
 }
