@@ -22,4 +22,22 @@ router.get('/', async (req, res) => {
   }
 });
 
+// GET /api/estabelecimentos/:id  (RF04)
+router.get('/:id', async (req, res) => {
+  try {
+    // Só aceita número inteiro positivo; qualquer outro valor é "não encontrado".
+    if (!/^[1-9]\d{0,8}$/.test(req.params.id)) {
+      return res.status(404).json({ erro: 'Estabelecimento não encontrado' });
+    }
+    const estabelecimento = await modelo.buscarPorId(Number(req.params.id));
+    if (!estabelecimento) {
+      return res.status(404).json({ erro: 'Estabelecimento não encontrado' });
+    }
+    res.json(estabelecimento);
+  } catch (erro) {
+    console.error('Erro ao buscar estabelecimento:', erro.message);
+    res.status(500).json({ erro: 'Erro interno do servidor' });
+  }
+});
+
 module.exports = router;
