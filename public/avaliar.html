@@ -16,13 +16,13 @@
         <h1>Guia Gastronômico de São Luís</h1>
         <nav>
             <a href="index.html">Início</a>
-            <a href="estabelecimentos.html">Estabelecimentos</a>
+            <a href="estabelecimentos.html" data-detalhes>Estabelecimentos</a>
             <a href="login.html">Entrar</a>
         </nav>
     </header>
 
     <main id="conteudo">
-        <form action="estabelecimentos.html">
+        <form action="estabelecimentos.html" data-detalhes>
             <h2>Avaliar Estabelecimento</h2>
 
             <p class="info-local">
@@ -53,9 +53,11 @@
             <button type="submit">Enviar Avaliação</button>
 
             <p class="form-rodape">
-                <a href="estabelecimentos.html">Voltar para detalhes</a>
+                <a href="estabelecimentos.html" data-detalhes>Voltar para detalhes</a>
             </p>
         </form>
     </main>
+
+    <script src="js/avaliar.js"></script>
 </body>
 </html>
