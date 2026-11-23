@@ -194,6 +194,37 @@ main {
     text-decoration: underline;
 }
 
+/* --- Tela de detalhes --- */
+.acoes-card {
+    margin-top: 1.5rem;
+}
+
+.card-avaliacoes {
+    margin-top: 1.5rem;
+}
+
+.avaliacao {
+    border-top: 1px solid #eeeeee;
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+}
+
+.avaliacao p {
+    margin-bottom: 0.25rem;
+}
+
+.avaliacao-nota {
+    font-weight: bold;
+}
+
+.avaliacao-comentario {
+    font-style: italic;
+}
+
+.avaliacao-autor {
+    font-size: 0.85rem;
+}
+
 /* --- Formulários (Login / Cadastro / Avaliação) --- */
 form {
     background-color: var(--branco);
