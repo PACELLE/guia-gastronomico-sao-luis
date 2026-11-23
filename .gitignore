@@ -1,0 +1,17 @@
+# Dependências (cada integrante instala com npm install)
+node_modules/
+
+# Segredos: nunca enviar ao GitHub (RNF08). Só o .env.exemplo vai para o repositório.
+.env
+.env.*
+!.env.exemplo
+
+# Logs
+*.log
+npm-debug.log*
+
+# Arquivos do sistema e de editores
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

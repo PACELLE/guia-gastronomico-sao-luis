@@ -1,0 +1,20 @@
+{
+  "name": "guia-gastronomico-sao-luis",
+  "version": "1.0.0",
+  "description": "Guia Gastronômico de São Luís - projeto da disciplina Desenvolvimento de Sistemas Web (EECP0036), UFMA, turma 24N12.",
+  "private": true,
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "db:criar": "node db/criar.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "pg": "^8.13.1"
+  }
+}
