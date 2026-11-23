@@ -187,6 +187,13 @@ main {
     display: none;
 }
 
+/* Filtro de categoria escolhido: preenchido e sublinhado (não depende só da cor) */
+.filtros button[aria-pressed="true"] {
+    background-color: var(--cor-primaria);
+    color: var(--branco);
+    text-decoration: underline;
+}
+
 /* --- Formulários (Login / Cadastro / Avaliação) --- */
 form {
     background-color: var(--branco);

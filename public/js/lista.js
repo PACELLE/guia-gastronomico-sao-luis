@@ -1,8 +1,16 @@
-// Página inicial: lista de estabelecimentos (RF01).
+// Página inicial: lista, busca por nome e filtro por categoria (RF01, RF02, RF03).
 // Os dados vêm da API (GET /api/estabelecimentos) e são exibidos com textContent.
 
+const campoBusca = document.getElementById('busca');
+const botoesFiltro = document.querySelectorAll('.filtros button');
 const areaLista = document.getElementById('lista');
 const areaMensagem = document.getElementById('mensagem');
+
+const ESPERA_DA_BUSCA_MS = 250;
+
+let categoriaAtual = '';
+let numeroDaUltimaConsulta = 0;
+let temporizadorDaBusca;
 
 function criarCartao(estabelecimento) {
   const cartao = criarElemento('article', undefined, 'card');
@@ -19,9 +27,15 @@ function criarCartao(estabelecimento) {
   return cartao;
 }
 
-function mostrarLista(lista) {
+function mostrarLista(lista, estaFiltrando) {
   areaLista.replaceChildren(...lista.map(criarCartao));
-  areaMensagem.textContent = lista.length > 0 ? '' : 'Nenhum estabelecimento cadastrado';
+  if (lista.length > 0) {
+    areaMensagem.textContent = '';
+  } else if (estaFiltrando) {
+    areaMensagem.textContent = 'Nenhum estabelecimento encontrado';
+  } else {
+    areaMensagem.textContent = 'Nenhum estabelecimento cadastrado';
+  }
 }
 
 function mostrarErro() {
@@ -30,15 +44,50 @@ function mostrarErro() {
 }
 
 async function carregarLista() {
+  const numeroDestaConsulta = ++numeroDaUltimaConsulta;
+  const busca = campoBusca.value.trim();
+
+  const parametros = new URLSearchParams();
+  if (busca) {
+    parametros.set('busca', busca);
+  }
+  if (categoriaAtual) {
+    parametros.set('categoria', categoriaAtual);
+  }
+
   try {
-    const resposta = await fetch('/api/estabelecimentos');
+    const resposta = await fetch(`/api/estabelecimentos?${parametros}`);
     if (!resposta.ok) {
       throw new Error(`Resposta ${resposta.status}`);
     }
-    mostrarLista(await resposta.json());
+    const lista = await resposta.json();
+    // Se o usuário digitou de novo enquanto esperava, ignora a resposta antiga.
+    if (numeroDestaConsulta !== numeroDaUltimaConsulta) {
+      return;
+    }
+    mostrarLista(lista, Boolean(busca || categoriaAtual));
   } catch (erro) {
-    mostrarErro();
+    if (numeroDestaConsulta === numeroDaUltimaConsulta) {
+      mostrarErro();
+    }
   }
 }
+
+function escolherCategoria(botao) {
+  categoriaAtual = botao.dataset.categoria;
+  botoesFiltro.forEach((outro) => {
+    outro.setAttribute('aria-pressed', String(outro === botao));
+  });
+  carregarLista();
+}
+
+campoBusca.addEventListener('input', () => {
+  clearTimeout(temporizadorDaBusca);
+  temporizadorDaBusca = setTimeout(carregarLista, ESPERA_DA_BUSCA_MS);
+});
+
+botoesFiltro.forEach((botao) => {
+  botao.addEventListener('click', () => escolherCategoria(botao));
+});
 
 carregarLista();
