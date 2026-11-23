@@ -19,7 +19,8 @@ app.get('/api/saude', (req, res) => {
   res.json({ status: 'ok' });
 });
 
-// As rotas da API entram aqui (uma por assunto, em src/routes/).
+// Rotas da API (uma por assunto, em src/routes/).
+app.use('/api/estabelecimentos', require('./routes/estabelecimentos'));
 
 // Qualquer outra rota /api responde 404 em JSON.
 app.use('/api', (req, res) => {
